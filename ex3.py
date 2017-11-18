@@ -1,0 +1,10 @@
+print ("test")
+print (25+30)
+print (55/6)
+print ("30/6", 30/6)
+print (25+5)
+print ("Hens", 25+30/6)
+
+print ("Is 5 < then 3?:", 5<3)
+print ("\n")
+print ("Is 5 > -2", 5 > -2)
