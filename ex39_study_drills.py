@@ -158,3 +158,4 @@ list_cities(input("You can now choose one state in order to show its main city.\
 #To Do's
 # Get the lists/dics from a file instead of manually tiping it in here. (Maybe Web-scrabble?)
 #DO all this with a very simple GUI
+#in order to import from file a list see oop_test.py
