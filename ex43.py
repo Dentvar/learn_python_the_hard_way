@@ -75,7 +75,7 @@ class CentralCorridor(Scene):
                 the academy. You tell the one Gothon joke you know:
                 lbhe zbgure vf fb sng, jura fur fvgf nebhaq gur ubhfr,
                 fur fvgf nebhag gur ubhfr. The Gothon stops, tried
-                not to laugh, then busts out laughing and can¡t move.
+                not to laugh, then busts out laughing and can't move.
                 While he's laughing you run up and shoot him square in
                 the head putting him down, then jump through the
                 Weapon Armory door."""))
