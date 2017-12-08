@@ -2,6 +2,16 @@ from sys import exit
 from random import randint
 from textwrap import dedent
 
+#Fighters Class- Sub Classes
+class Fighters(object):
+    
+    health = 100
+    attack_power = 0
+
+    def basic_attack(self, enemy):
+        enemy.health = enemy.health - self.attack_power
+
+
 #Scene Class- Sub Classes
 class Scene(object):
 
@@ -81,6 +91,44 @@ class CentralCorridor(Scene):
                 Weapon Armory door."""))
                 
             return 'laser_weapon_armory'
+
+        elif action == "fight":
+            print(dedent("""
+                A wilde fight breaks out...
+                """))
+            #Print Fighters Health
+            print("Player Health:", player.health)
+            print("Gothon Health:", gothon.health)
+            #Set random attack damage for both fighers
+            player.attack_power = randint(1, 10)
+            gothon.attack_power = randint(1, 10)
+            print("Player Attack Power", player.attack_power)
+            print("Gothon Attack Power", gothon.attack_power)
+
+
+            while player.health > 0 and gothon.health > 0:
+
+                player.basic_attack(gothon)
+                gothon.basic_attack(player)
+                print(f"You hit the Gothon... and deal {player.attack_power} Damage")
+                print(f"The Gothon also hits you... and deal {gothon.attack_power} Damage")
+                print("Player has", player.health, "left")
+                print("Gothon has", gothon.health, "left")
+            
+            if gothon.health <= 0 and player.health <= 0:
+                print("It's a Draw... you both die.")
+
+                return 'death'
+
+            elif gothon.health <= 0:
+                print("You have won! The way to the next room is clear")
+
+                return 'laser_weapon_armory'
+
+            else:
+                print("The Gothon was stronger... You die")
+
+                return 'death'
 
         else:
             print("DOES NOT COMPUTE!")
@@ -259,8 +307,16 @@ class Map(object):
 
 
 
+
+
+# Create an instance of Map with the arguemnt 'Central_corridor'. The instance is called a_map
+# a_map contains one object = start_scene = 'central_corridor'
+player = Fighters()
+gothon = Fighters()
 a_map = Map('central_corridor')
+# Create an instance of Engine with the arguemnt 'a_map'. The instance is called a_game
+# a_game contains one object = scene_map = a_map
 a_game = Engine(a_map)
+# calls the play funcion with the argument 'a_game'
 a_game.play()
-# test = Death()
-# test.enter()
+
