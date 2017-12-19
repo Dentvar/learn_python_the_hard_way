@@ -1,4 +1,8 @@
-assert 1 == 2, "problemo"
-print("inside")
-print("outside")
+test = {
+    "1": 1,
+    "2": 2
+}
 
+for x, y in test.items():
+    print(x)
+    print(y)

@@ -2,7 +2,7 @@ from sys import exit
 from random import randint
 from textwrap import dedent
 
-#Fighters Class- Sub Classes
+#Fighters Class
 class Fighters(object):
     
     health = 100
@@ -93,6 +93,10 @@ class CentralCorridor(Scene):
             return 'laser_weapon_armory'
 
         elif action == "fight":
+            
+            player = Fighters()
+            gothon = Fighters()
+
             print(dedent("""
                 A wilde fight breaks out...
                 """))
@@ -265,7 +269,7 @@ class Finished(Scene):
         print("You won! good job.")
         return 'finished'
 
-#Engine Class- Sub Classes
+#Engine Class
 class Engine(object):
 
     def __init__(self, scene_map):
@@ -282,7 +286,7 @@ class Engine(object):
         # be sure to print out the last scene
         current_scene.enter()
 
-#Map Class- Sub Classes
+#Map Class
 class Map(object):
 
     scenes = {
@@ -304,19 +308,16 @@ class Map(object):
     def opening_scene(self):
         return self.next_scene(self.start_scene)
 
-
-
-
-
-
-# Create an instance of Map with the arguemnt 'Central_corridor'. The instance is called a_map
-# a_map contains one object = start_scene = 'central_corridor'
-player = Fighters()
-gothon = Fighters()
+#creates an instance of Map named a_map --> Map has a "a_map" forwarding 'central corridor' as argument
 a_map = Map('central_corridor')
-# Create an instance of Engine with the arguemnt 'a_map'. The instance is called a_game
-# a_game contains one object = scene_map = a_map
+print("--> a_map.start_scene=", a_map.start_scene)
+#creates an instance of Engine named a_game --> Engine has "a_game" forwarding "a_map" as argument
 a_game = Engine(a_map)
-# calls the play funcion with the argument 'a_game'
+print("--> a_game.scene_map.start_scene=", a_game.scene_map.start_scene)
+# calls the play funtion from the engine class with the argument 'a_game' --> play(a_game)
 a_game.play()
+#play calls the funtion "opening_scene()" from the a_map instance.
+# --> opening_scene(a_map)
+# 
+
 
