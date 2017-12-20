@@ -277,7 +277,9 @@ class Engine(object):
 
     def play(self):
         current_scene = self.scene_map.opening_scene()
+        print("current_scene is:", current_scene.)
         last_scene = self.scene_map.next_scene('finished')
+        print("last_scene is:", last_scene)
 
         while current_scene != last_scene:
             next_scene_name = current_scene.enter()
@@ -315,6 +317,7 @@ print("--> a_map.start_scene=", a_map.start_scene)
 a_game = Engine(a_map)
 print("--> a_game.scene_map.start_scene=", a_game.scene_map.start_scene)
 # calls the play funtion from the engine class with the argument 'a_game' --> play(a_game)
+print("********************Enter Play********************")
 a_game.play()
 #play calls the funtion "opening_scene()" from the a_map instance.
 # --> opening_scene(a_map)
