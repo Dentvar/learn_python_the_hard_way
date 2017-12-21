@@ -1,8 +1,17 @@
-test = {
-    "1": 1,
-    "2": 2
-}
+from sys import exit
 
-for x, y in test.items():
-    print(x)
-    print(y)
+def test():
+    print("soy test")
+    exit()
+
+scenes = {
+    'central_corridor': "CentralCorridor()",
+    'laser_weapon_armory': "LaserWeaponArmory()",
+    'the_bridge': "TheBridge()",
+    'escape_pod': "EscapePod()",
+    'death': test,
+    'finished': "Finished()",
+    }
+
+print(scenes.get("death"))
+scenes.get("death")()
