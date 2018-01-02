@@ -240,6 +240,7 @@ class EscapePod(Scene):
             """))
         
         good_pod = randint(1,5)
+        print("The good pod is:", good_pod)
         guess = input ("[pod #]> ")
 
         if int(guess) != good_pod:
@@ -276,17 +277,13 @@ class Engine(object):
 
     def play(self):
         current_scene = self.scene_map.opening_scene()
-        print("scene_map is:", self.scene_map)
-        print("print 'a_map'=", a_map)
-        print("current_scene is:", current_scene)
         last_scene = self.scene_map.next_scene('finished')
-        print("last_scene is:", last_scene)
 
         while current_scene != last_scene:
             next_scene_name = current_scene.enter()
             current_scene = self.scene_map.next_scene(next_scene_name)
         
-        # be sure to print out the last scene
+        # In case current_scene is == last_scene just enter the last scene and finish the game.
         current_scene.enter()
 
 #Map Class
@@ -304,30 +301,18 @@ class Map(object):
     def __init__(self, start_scene):
         self.start_scene = start_scene
     
-    #Next scene gives back the valor mapped to the argument its called with
     def next_scene(self, scene_name):
-        val = Map.scenes.get(scene_name)
-        print("val in next_scene is=", val)
+        val = self.scenes.get(scene_name)
         return val
     
     def opening_scene(self):
-        print("in opening scene start_scene is:", self.start_scene)
         return self.next_scene(self.start_scene)
 
-#creates an instance of Map named a_map --> Map has a "a_map" forwarding 'central corridor' as argument
+
 a_map = Map('central_corridor')
-print("--> a_map.start_scene=", a_map.start_scene)
-#creates an instance of Engine named a_game --> Engine has "a_game" forwarding "a_map" as argument
+
 a_game = Engine(a_map)
-print("--> a_game.scene_map.start_scene=", a_game.scene_map.start_scene)
-# calls the play funtion from the engine class with the argument 'a_game' --> play(a_game)
-print("\n\n********************Enter Play********************\n\n")
-print("print 'a_map'=", a_map)
-print("print 'a_game'=", a_game)
-print("\n\n")
+
 a_game.play()
-#play calls the funtion "opening_scene()" from the a_map instance.
-# --> opening_scene(a_map)
-# 
 
 

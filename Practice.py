@@ -1,17 +1,13 @@
-from sys import exit
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget
 
-def test():
-    print("soy test")
-    exit()
+app = QApplication(sys.argv)
 
-scenes = {
-    'central_corridor': "CentralCorridor()",
-    'laser_weapon_armory': "LaserWeaponArmory()",
-    'the_bridge': "TheBridge()",
-    'escape_pod': "EscapePod()",
-    'death': test,
-    'finished': "Finished()",
-    }
+w = QWidget()
 
-print(scenes.get("death"))
-scenes.get("death")()
+w.resize(250, 150)
+w.move(300, 300)
+w.setWindowTitle('Simple')
+w.show()
+    
+sys.exit(app.exec_())
