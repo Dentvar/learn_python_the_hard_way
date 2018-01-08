@@ -1,0 +1,6 @@
+Player Name,Player Tries
+Marius,30
+Maria,40
+Maria,40
+Svadun,80
+Svadun,80
