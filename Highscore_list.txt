@@ -1,6 +1,4 @@
-Player Name,Player Tries
 Marius,30
 Maria,40
-Maria,40
-Svadun,80
+Oriol,50
 Svadun,80
