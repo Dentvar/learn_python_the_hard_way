@@ -14,34 +14,9 @@ class Character(object):
         "spear"
     }
 
-    
-    def counter(self):
-        self.attamps = 0
-        # open(savedata.txt, w)
-        self.attamps += 1
-        print("Counter is now:", self.attamps)
-
 
     def character_creations(self):
         self.name = input("Hello Advanturer, whats your Name?\n-->")
-
-        savedata = open("savedata.txt", "w")
-        for line in savedata:
-            readed_value = savedata.readline()
-            if readed_value == self.name:
-                val = 0
-            else:
-                val = 1
-            
-        if val == 1:
-            print("Val is 1")
-            # self.name hinzufügen
-            # count dazu auf 0 setzen
-        else:
-            print("Val is 0")
-            # denn zu gehörigen count suchen
-        # close(savedata)
-
         print("Welcome",self.name)
 
     def select_tool(self):

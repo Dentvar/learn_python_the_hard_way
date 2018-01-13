@@ -1,6 +1,5 @@
 import characters
 characters = characters.Character()
-counter = characters.counter()
 
 # Define Player as global and instance of Character()
 global player
@@ -54,8 +53,6 @@ class Death(Scenarios):
 class Tunnel(Scenarios):
 
     def enter(self):
-        # For each try the player does, count +1
-        player.counter()
         print("You are in Room 'tunnel'")
         if player.tool == "rope":
             pass

@@ -1,29 +1,33 @@
 import fileinput
 
 def clear_file(file):
-    # Just deletes the content of the file. For testing only.
+    """Just deletes the content of the file. For testing only."""
     f = open(file, "w")
     f.write("")
     f.close
 
-def convert_file_to_list(file, player_name):
-    """converts the given file into a list and returns it"""
+def get_last_player_score(file, player_name):
+    """searches for player name and gives back his lasts score"""
     f = open(file, "r")
-    l = []
     for line in f:
-        s = line.strip("\n")
-        s = s.split(",")
-
-        l.append(s)
-    
+        string = line.split(",")
+        if string[0] == player_name:
+            score = int(string[1].strip("\n"))
+            break
+        else:
+            score = 0
     f.close()
-    return (l)
 
+    if score > 0:
+        print("Welcome Back", player_name, "you have played",score, "times")
+    else:
+        print("new Player")
 
-def save_highscore(l, file): 
+    return (score)
+
+def save_highscore(l, file): #unfinished
 
     new_player = False
-
 
 
     for i in l:
@@ -55,27 +59,15 @@ def save_highscore(l, file):
     else:
         pass
 
-def load_last_player_data(l):
-# search for player name in the file and if found load its number of tries
-
-    val = "0"
-    for i in l:
-        if i[0] == player_name:
-            val = i[1]
-            break
-        else:
-            val = "1"
-
-    return val
 
 f = "./Highscore_list.txt"
 player_name = input("Whats your name\n-->")
-highscore_list = convert_file_to_list(f, player_name)
-player_tries = load_last_player_data(highscore_list)
-print("Player tries just after loading", player_tries)
-save_highscore(highscore_list, f)
-print("Player tries after saving", player_tries)
 
+# highscore_list = convert_file_to_list(f)
+# player_tries = load_last_player_data(highscore_list)
+# save_highscore(highscore_list, f)
+
+get_last_player_score(f, player_name)
 
 
 
