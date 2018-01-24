@@ -1,6 +1,5 @@
 class Character(object):
 
-
     tools={
         "lighter",
         "rope",
@@ -35,7 +34,7 @@ class Character(object):
             self.select_tool()
         else:
             # if input is correct just go on.
-            print(f"You have choosen {self.tool} as a tool.")
+            print(f"You have choosen {self.tool} as a tool.\n")
 
     def select_weapon(self):
         print("You can choose one of the following Weapons:")
