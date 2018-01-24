@@ -1,13 +1,35 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QWidget
+from random import randint
 
-app = QApplication(sys.argv)
 
-w = QWidget()
+a = randint(0, 2)
 
-w.resize(250, 150)
-w.move(300, 300)
-w.setWindowTitle('Simple')
-w.show()
-    
-sys.exit(app.exec_())
+b = randint(0, 2)
+while b == a:
+    b = randint(0, 2)
+
+c = randint(0, 2)
+while c == a or c == b:
+    c = randint(0, 2)
+
+print("a is:", a)
+print("b is:", b)
+print("c is:", c)
+
+tup=(
+    "dark tunnel",
+    "pool",
+    "arena"
+    )
+
+door =  str.lower(input("-->"))
+
+print ("tub[a] is:", tup[a])
+print ("tub[b] is:", tup[b])
+print ("tub[c] is:", tup[c])
+
+if door == "1":
+    print(tup[a])
+if door == "2":
+    print(tup[b])
+if door == "3":
+    print(tup[c])

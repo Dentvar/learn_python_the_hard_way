@@ -27,7 +27,7 @@ class Router(object):
         "behind door": scenarios.BehindDoor(),
         "pit": scenarios.Pit(),
         "diamond room": scenarios.DiamondRoom(),
-        "dark dunnel": scenarios.DarkTunnel(),
+        "dark tunnel": scenarios.DarkTunnel(),
         "pool": scenarios.Pool(),
         "arena": scenarios.Arena(),
         "staircase": scenarios.Staircase()

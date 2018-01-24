@@ -1,6 +1,8 @@
 import characters
 characters = characters.Character()
+
 from textwrap import dedent
+from random import randint
 
 # Define Player as global and instance of Character()
 global player
@@ -25,6 +27,11 @@ class MainMenu(Scenarios):
             return "tunnel"
         elif selection == "2" or selection == "exit":
             exit()
+        #Cheat code
+        elif selection =="gato":
+            print("Cheater!!!")
+            player.tool = "rope"
+            return(str.lower(input("Input the room you want to go to\n-->")))
         else:
             print("Does not compute")
             return "main menu"
@@ -111,18 +118,99 @@ class BehindDoor(Scenarios):
         there is a small glimmering light. It seems like the way has been blocked by rocks.
         """))
         if player.tool == "lighter":
-            print(dedent("""Luckyly you picked the lighter with you. Before going towards the light,))
+            print(dedent("""
+            Luckyly you picked the lighter with you.
+            Before going towards the light, you make a torch out of the shovel stick
+            and a bit of cloth that you were.
+            Nearly you would have missed the big hole in the floor. You go around it
+            and reach the rocks that are blocking the way to the next room
+            """))
+            return ("diamond room")
+        else:
+            print(dedent("""
+            You start going toward the light. Suddenly you lose the ground under your feet. You notice how you fall down...
+            """))
+            return("pit")
         
 
 class Pit(Scenarios):
     def enter(self):
-        print("You are in Room:'pit'")
+        print(dedent("""
+        You felt into a Pit.
+        You look around, it seems as its just some meter high.
+        """))
+
+        if player.tool == "rope":
+            print(dedent("""
+            You take the rope and makes a knot on one side and throw it up.
+            Somehow you manage to get it stuck on something and climbs out the hole
+            Finally you reach the next room with the strange light.
+            The rope however was damaged by friction and is useless now.
+            """))
+            #could set player.tool to "none" but for now nothing would use this state.
+            return ("diamond room")
+        else:
+            print(dedent("""
+            There seems to be no way out here, you try for days to climb out of the hole.
+            The bottle of water you took with you is slowly running out of water and finnaly you die there.
+            """))
+            return ("death")
         exit()
     
 class DiamondRoom(Scenarios):
     def enter(self):
-        print("You are in Room:'diamondroom'")
-        exit()
+        print(dedent("""
+        Once you reached the room with the strange light, you see that the light comes from...
+        A huge diamond that is on a pedestal in the middel of the room.
+        
+        In the seeling there is a hole and the sun is shining in, pointing direkctly on the diamond that makes the room shine like there was a disco bole.
+        You look around, the room it's shaped as a pentagon and there are 4 doors going out. Including the one you just came from.
+        You goes near the diamond. It does not seem to be fixed in anyway on the pedestal. No mecanism or trap seems visible.
+        Strange...
+
+        So finally you decide to carefully take it down.
+        But you were wrong. Once you completly took of the weight of the pedestal a "click" sounds and a deep rumbling goes throght the dungeon.
+        Suddenly the sealing of the room, that you just have come from falls down and the way is blocked.
+
+        So now you only can choose between 3 doors.
+        You do not know what is behind each of this doors.
+        There are no marks or hinds what could be behind this doors. So you need to decide for one of them.
+        """))
+
+        return(self.random_room_asignation())
+        #makes sure that rooms are not the same in each playthough.
+
+    def random_room_asignation(self):
+        
+        #Random Asignation of a,b,c
+        a = randint(0, 2)
+
+        b = randint(0, 2)
+        while b == a:
+            b = randint(0, 2)
+
+        c = randint(0, 2)
+        while c == a or c == b:
+            c = randint(0, 2)
+
+        tup=(
+            "dark tunnel",
+            "pool",
+            "arena"
+            )
+
+        door =  str.lower(input("-->"))
+
+        if door == "1":
+            return(tup[a])
+        elif door == "2":
+            return(tup[b])
+        elif door == "3":
+            return(tup[c])
+        else:
+            print("Does not compute")
+            return ("diamond room")
+
 
 class DarkTunnel(Scenarios):
     def enter(self):
