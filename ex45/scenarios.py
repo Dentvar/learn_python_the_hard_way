@@ -8,6 +8,7 @@ from random import randint
 global player
 player = characters
 
+
 class Scenarios(object):
     # Only because it seems I need a parent for the other rooms
     pass
@@ -30,7 +31,7 @@ class MainMenu(Scenarios):
         #Cheat code
         elif selection =="gato":
             print("Cheater!!!")
-            player.tool = "rope"
+            player.select_tool()
             return(str.lower(input("Input the room you want to go to\n-->")))
         else:
             print("Does not compute")
@@ -49,11 +50,11 @@ class Death(Scenarios):
 
         if selection == "1" or selection == "yes":
             # Maybe reset some variables?! WIP
-            return "tunnel"
+            return "main menu"
             
         elif selection == "2" or selection == "no":
             # Maybe save some variables once save games are included! WIP
-            return "main menu"
+            exit()
         else:
             print("Does not compute")
             return("death")
@@ -214,21 +215,76 @@ class DiamondRoom(Scenarios):
 
 class DarkTunnel(Scenarios):
     def enter(self):
-        print("You are in Room:'darktunnel'")
-        exit()
+        print(dedent("""
+        You open the door... Behind it there is a long dark Tunnel.
+        You start to go along, step by step to not fall into a hole again.
+        """))
+        if player.tool == "bottle of water":
+            print(dedent("""
+            Luckyly you have taken the water bottle with you. The coridor is very long and you had to rest a lot of times. Without the water bottle, you would have died.
+            At the end of the corridor he reaches a new room with a staircase going up.
+            """))
+            return "staircase"
+        else:
+            print(dedent(""""
+            You notice that the corridor is very long but you realize this so late that at the end there is no way that you can make it back.
+            You finally die in the tunnel of thirst.
+            """))
+            return "death"
 
 class Pool(Scenarios):
     def enter(self):
-        print("You are in Room:'pool'")
-        exit()
+        print(dedent("""
+        You open the door... Behind it there is a pool of water.
+        On the other side a room with a staircase going upstairs.
+        You start to swim over when suddenly a crocodile catchs your left leg pull you under water and easts you has a little snack.
+        """))
+        return "death"
 
 class Arena(Scenarios):
     def enter(self):
+        print(dedent("""
+        You open the door... Behind it there is a big round Arena.
+        The floor is full of different weapons. You decide to  chooses one without knowing what is coming up. Just in case.
+        """))
         player.select_weapon()
-        print("You are in Room:'arena'")
-        exit()
+        if player.weapon == "sword":
+            print(dedent("""
+            A tiger apears and atacks you. You fall backwards on the ground, but the Tiger jumps streight into the sword.
+            The Tiger dies and you are able to cross the arena and go through the door and he reached a room with a Staircase going upstairs.
+            """))
+            return ("staircase")
+
+        elif player.weapon == "crossbow":
+           print(dedent("""
+           A tiger apears and atacks you. You try to aim with the crossbow and shoot, but the bolt miss its target.
+           No time to reload the crossbow... The tiger gets to you and rips you apart.
+           """))
+           return ("death")
+        elif player.weapon == "shield":
+            print(dedent("""
+            A tiger apears and atacks you. You block the claw atacks for a while with the shield but finally the tiger learn how to get around the shiled and rips you apart.
+            """))
+            return ("staircase")
+        elif player.weapon == "spear":
+            print(dedent("""
+            A tiger apears and atacks you. You stick the spear into the floor in the direction the tiger is coming from.
+            The tiger is so hungry and desperate that he does not see it comin and jumps streight into the spear an die.
+            You cross tha arena now and reach a room with a Staircaise going upstearis.
+            """))
+            return ("staircase")
+        else: #Should never happen.
+            print("some strange error happened")
+            exit()
 
 class Staircase(Scenarios):
     def enter(self):
-        print("You are in Room:'staircase'")
+        print(dedent("""
+        You go the stairs up, at the end of the stairs you reach a small hatched door.
+        You carefully open it. It lead you back to the superfice.
+        You Escaped the dungeon!!!
+        Now go sell your huge diamond and learn that money does not makes you happy.
+        But the story you can now tell. Will bring a lot of joy to the world, for sure.
+        """))
+        print("Game Over, you won")
         exit()
