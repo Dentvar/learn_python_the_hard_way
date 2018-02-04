@@ -10,14 +10,13 @@ He looks around, it seems as its just some meter high.
 If rope: He takes the rope and makes a "Schlaufe" and throw it up, he somehow manage to get it stuck on something and climbs out the hole and finally can reach the next room with the strange light the rope however was damaged by friction and is useless now.
 If: Bottle of water: there seems to be no way out here, he tries for days to climb out of the hole. The bottle of water he had is slowly running out of water and finnaly he dies there.
 Once he reached the room with the strange light, he sees that the light comes from a huge diamond that is on a pedestal in the middel of the room. In the seeling there is a hole and the sun is shining in, pointing direkctly on the diamond what makes the room shine like there was a disco bole.
-He looks around, the room is shaped as a pentagon and there are 5 doors going out. Including the one he just came from.
+He looks around, the room is shaped as a pentagon and there are 4 doors going out. Including the one he just came from.
 he goes nearer to the diamond. It does not seem to be fixed in anyway on the pedestal. No mecanism or trap seems visible. So he finally decides to carefully take it down.
 But he was wrong. once he completly took of the weight of the pedestal a "click" sounds and a deep rumbling goes throguh the dungeon.
 Suddenly the sealing of the room that he just have come from falls down and the way is blocked.
-If torch: A lot of dust is coming up and turns of the torch that he was wearing.
-Other tool: Just go on no dust.
-So now he only can choose between 4 doors.
+So now he only can choose between 3 doors.
 He does not know what is behind each of this doors. There are no marks or hinds what could be behind this doors. So he has to decide for one of them.
+
 1: he opens the door slowly and finds a long dark tunnel. is in front of him. he starts to go along it step by step to not fall into a hole again.
 If Water bottle: luckyly he has taken the water bottle with him because the coridor is very long and he had to rest a lot of times without it he would have died. At the end of the corridor he reaches a new room with a staircase going up.
 If other tool: he noticed that the corridor is very long but he realizes this so late that at the end there is no way that he can make it back. He finally dies in the tunnel because he has no water....
@@ -33,65 +32,3 @@ Spear:A tiger apears and atacjs him. He  sticks the speark into the floor in the
 He goes the stairsup and at the end of the stairs he reached a small hatched door that leades again back to the superfice and he can escape the dungeon. From there on he lifed happy and rich in a small house that he bought.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#Included
-Give the Player a name
-Choose a tool
-When dead ask to try again.
-
-
-# To be included
-
-
-
-Decide to open the door or not. If yes, how to?
-Entering first room. Its dark, if he had the lighter, he can make a torch
-assign the 4 diferent rooms randomly to one of hte 4 numbers you can choose
-Insert a "Cheat" to call the room by its name.
-create a fight system for the case that he picks the spear. With decisions of hard atacks, fast atacks,...
-Store the tries based on the player name
-Count the steps that he needed to go through in each try and store this.
-
-make a list of random death's scenerios for each room
-
-
-#Bonus to be incliuded
-Add sounds
-add images into the gui
-Do this with buttons and a easy GUI.
-
-#Class skeleton
-
-Player
-
-Tools = shovel, lighter, rope, bottle of water
-
-Weapons
-
-Rooms:
-first room
-    if torch = ok
-    else = pit
-
-pit
-    if rope = ok
-    bottle of water = death by no water
-
-Diamond Room (no interaction needed)
-    if torch then put it out
-    else nothing
-
-dark tunnel
-    if water bottle = staircase
-    else = dead by no water
-
-Pool
-    always = death by drowning
-
-Arena
-    choose weapons 
-        if Sword = win 
-        if Crossbow = Death
-        if Shield = Death
-        if Spear = Win
-
-Staircaise

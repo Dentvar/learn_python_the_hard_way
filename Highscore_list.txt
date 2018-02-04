@@ -1,4 +1,0 @@
-Marius,30
-Maria,40
-Oriol,50
-Svadun,80

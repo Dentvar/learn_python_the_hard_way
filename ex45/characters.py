@@ -15,10 +15,12 @@ class Character(object):
 
 
     def character_creations(self):
+
         self.name = input("Hello Advanturer, whats your Name?\n-->")
         print("Welcome",self.name)
 
     def select_tool(self):
+
         print("You can choose one of the following items for your Advanture:")
         print("\nPossible tools:")
         # List the items of the tools list
@@ -37,6 +39,7 @@ class Character(object):
             print(f"You have choosen {self.tool} as a tool.\n")
 
     def select_weapon(self):
+        
         print("You can choose one of the following Weapons:")
         print("\nPossible Weapons:")
 
