@@ -23,11 +23,10 @@ def test_map():
     west = Room("Trees", "Tehre are trees here, you can go east.")
     down = Room("Duengeon", "It's dark down here, you can go up.")
 
-    start.add_paths({'west': west, 'down': dopwn})
-    wetst.add_paths({'east': start})
+    start.add_paths({'west': west, 'down': down})
+    west.add_paths({'east': start})
     down.add_paths({'up': start})
 
     assert_equal(start.go('west'), west)
     assert_equal(start.go('west').go('east'), start)
-    assert_equal(start.go('down').go('go'), start)
-    
+    assert_equal(start.go('down').go('up'), start)

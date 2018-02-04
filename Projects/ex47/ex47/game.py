@@ -9,4 +9,4 @@ class Room(object):
         return self.paths.get(direction, None)
 
     def add_paths(self, paths):
-        self.add_paths.update(paths)
+        self.paths.update(paths)
